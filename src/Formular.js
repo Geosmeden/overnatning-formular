@@ -91,15 +91,22 @@ function Formular() {
     ansoeger_mail: yup
       .string()
       .required("Ansøger mail er et krævet felt"),
-    ansoeger_navn: yup.string().required(),
+    ansoeger_navn: yup
+      .string()
+      .required("Ansøger navn er et krævet felt"),
     ansoeger_tlf: yup
       .string()
-      .matches(/^[0-9]{8}$/, "telefonnr skal have 8 tal"),
-    ansvarl_kontaktmail: yup.string().email().required(),
-    ansvarl_kontaktpers: yup.string().required(),
+      .matches(/^[0-9]{8}$/, "Ansøger telefonnummeret skal have 8 tal"),
+    ansvarl_kontaktmail: yup
+      .string()
+      .email("Der skal indtastes en valid email adresse")
+      .required("Ansvarlig mail er et krævet felt"),
+    ansvarl_kontaktpers: yup
+      .string()
+      .required("Ansvarlig navn er et krævet felt"),
     ansvarl_kontaktlf: yup
       .string()
-      .matches(/^[0-9]{8}$/, "telefonnr skal have 8 tal"),
+      .matches(/^[0-9]{8}$/, "Ansvarlig telefonnummeret skal have 8 tal"),
     overnat_adresse: yup.string().min(1),
     overnat_antal: yup.number().positive().integer(),
     overnat_kommune: yup.string().required(),
