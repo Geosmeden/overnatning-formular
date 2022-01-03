@@ -88,7 +88,9 @@ function Formular() {
   });
 
   let schema = yup.object().shape({
-    ansoeger_mail: yup.string().required(),
+    ansoeger_mail: yup
+      .string()
+      .required("Ansøger mail er et krævet felt"),
     ansoeger_navn: yup.string().required(),
     ansoeger_tlf: yup
       .string()
