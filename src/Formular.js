@@ -108,7 +108,11 @@ function Formular() {
       .string()
       .matches(/^[0-9]{8}$/, "Ansvarlig telefonnummeret skal have 8 tal"),
     overnat_adresse: yup.string().min(1),
-    overnat_antal: yup.number().positive().integer(),
+    overnat_antal: yup
+	  .number()
+	  .positive()
+	  .integer()
+	  .required("Antal er et krævet felt"),
     overnat_kommune: yup.string().required(),
     overnat_lokaler: yup.string().required(),
     overnat_navn: yup.string().required(),
