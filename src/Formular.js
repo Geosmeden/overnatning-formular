@@ -88,35 +88,36 @@ function Formular() {
   });
 
   let schema = yup.object().shape({
-    ansoeger_mail: yup
-      .string()
-	  .email("Ansøger mail skal være en valid email adresse")
-      .required("Ansøger mail er et krævet felt"),
+    overnat_kommune: yup.string().required("Vælg kommune, for at kunne vælge adresse"),
+    overnat_adresse: yup.string().required("Overnatningstedets adresse er et krævet felt"),
+    overnat_navn: yup.string().required("Overnatningstedets navn er et krævet felt"),
+    overnat_lokaler: yup.string().required("Lokaler er et krævet felt"),
+	overnat_over_150: yup.string().required(),
+    overnat_antal: yup
+	  .number("Maksimalt antal overnattende skal udfyldes med et tal")
+	  .typeError("Maksimalt antal overnattende skal udfyldes med et tal")
+	  .positive("Maksimalt antal overnattende skal udfyldes med et positivt tal.")
+	  .integer("Maksimalt antal overnattende skal udfyldes med et tal"),
     ansoeger_navn: yup
       .string()
       .required("Ansøger navn er et krævet felt"),
     ansoeger_tlf: yup
       .string()
       .matches(/^[0-9]{8}$/, "Ansøger tlf. skal have 8 tal"),
-    ansvarl_kontaktmail: yup
+	ansoeger_mail: yup
       .string()
-      .email("Ansvarlig mail skal være en valid email adresse")
-      .required("Ansvarlig mail er et krævet felt"),
-    ansvarl_kontaktpers: yup
+	  .email("Ansøger mail skal være en valid email adresse")
+      .required("Ansøger mail er et krævet felt"),
+	ansvarl_kontaktpers: yup
       .string()
       .required("Ansvarlig navn er et krævet felt"),
     ansvarl_kontaktlf: yup
       .string()
       .matches(/^[0-9]{8}$/, "Ansvarlig tlf. skal have 8 tal"),
-    overnat_adresse: yup.string().required("Overnatningstedets adresse er et krævet felt"),
-    overnat_antal: yup
-	  .number("Maksimalt antal overnattende skal udfyldes med et tal")
-	  .positive("Maksimalt antal overnattende skal udfyldes med et positivt tal.")
-	  .integer("Maksimalt antal overnattende skal udfyldes med et tal"),
-    overnat_kommune: yup.string().required("Vælg kommune, for at kunne vælge adresse"),
-    overnat_lokaler: yup.string().required("Lokaler er et krævet felt"),
-    overnat_navn: yup.string().required("Overnatningstedets navn er et krævet felt"),
-    overnat_over_150: yup.string().required(),
+    ansvarl_kontaktmail: yup
+      .string()
+      .email("Ansvarlig mail skal være en valid email adresse")
+      .required("Ansvarlig mail er et krævet felt"),    
     // overnat_tegning : yup.string().required(),
     // overnat_tegning_filnavn : yup.string().required(),
     overnat_slut_dato: yup.string().required(),
