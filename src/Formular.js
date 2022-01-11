@@ -90,32 +90,32 @@ function Formular() {
   let schema = yup.object().shape({
     ansoeger_mail: yup
       .string()
+	  .email("Ansøger mail skal være en valid email adresse")
       .required("Ansøger mail er et krævet felt"),
     ansoeger_navn: yup
       .string()
       .required("Ansøger navn er et krævet felt"),
     ansoeger_tlf: yup
       .string()
-      .matches(/^[0-9]{8}$/, "Ansøger telefonnummeret skal have 8 tal"),
+      .matches(/^[0-9]{8}$/, "Ansøger tlf. skal have 8 tal"),
     ansvarl_kontaktmail: yup
       .string()
-      .email("Der skal indtastes en valid email adresse")
+      .email("Ansvarlig mail skal være en valid email adresse")
       .required("Ansvarlig mail er et krævet felt"),
     ansvarl_kontaktpers: yup
       .string()
       .required("Ansvarlig navn er et krævet felt"),
     ansvarl_kontaktlf: yup
       .string()
-      .matches(/^[0-9]{8}$/, "Ansvarlig telefonnummeret skal have 8 tal"),
-    overnat_adresse: yup.string().min(1),
+      .matches(/^[0-9]{8}$/, "Ansvarlig tlf. skal have 8 tal"),
+    overnat_adresse: yup.string().required("Overnatningstedets adresse er et krævet felt"),
     overnat_antal: yup
-	  .number()
-	  .positive()
-	  .integer()
-	  .required("Antal er et krævet felt"),
-    overnat_kommune: yup.string().required(),
-    overnat_lokaler: yup.string().required(),
-    overnat_navn: yup.string().required(),
+	  .number("Maksimalt antal overnattende skal udfyldes med et tal")
+	  .positive("Maksimalt antal overnattende skal udfyldes med et positivt tal.")
+	  .integer("Maksimalt antal overnattende skal udfyldes med et tal"),
+    overnat_kommune: yup.string().required("Vælg kommune, for at kunne vælge adresse"),
+    overnat_lokaler: yup.string().required("Lokaler er et krævet felt"),
+    overnat_navn: yup.string().required("Overnatningstedets navn er et krævet felt"),
     overnat_over_150: yup.string().required(),
     // overnat_tegning : yup.string().required(),
     // overnat_tegning_filnavn : yup.string().required(),
@@ -324,9 +324,9 @@ function Formular() {
           <TextInput
             size={12}
             id='overnat_navn'
-            title='Overnatningstedets Navn'
+            title='Overnatningstedets navn'
           />
-          <TextInput size={12} id='overnat_lokaler' title='Lokaler' />
+          <TextInput size={12} id='overnat_lokaler' title='Lokaler (navn på de lokaler overnatningen foregår i)' />
           <Grid item xs={6}>
             <Typography
               style={{ color: "rgba(0, 0, 0, 0.54)" }}
@@ -348,7 +348,7 @@ function Formular() {
             size={12}
             id='overnat_antal'
             type='number'
-            title='Maksimal antal overnatninger'
+            title='Maksimalt antal overnattende'
           />
           <DateTimeInputs />
           <TextInput size={12} id='ansoeger_navn' title='Ansøger navn' />
@@ -363,18 +363,18 @@ function Formular() {
           <TextInput
             size={12}
             id='ansvarl_kontaktpers'
-            title='Navn ansvarlig'
+            title='Ansvarlig navn'
           />
           <TextInput
             type='number'
             size={6}
             id='ansvarl_kontaktlf'
-            title='Tlf. ansvarlig'
+            title='Ansvarlig tlf.'
           />
           <TextInput
             size={6}
             id='ansvarl_kontaktmail'
-            title='E-mail ansvarlig'
+            title='Ansvarlig mail'
           />
 
           <SubmitButton onClick={submitHandler} />

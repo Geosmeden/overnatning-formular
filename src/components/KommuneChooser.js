@@ -7,14 +7,14 @@ const kommuner = [
     value: "Aarhus",
     nummer: 751,
   },
-  {
-    value: "Favrskov",
-    nummer: 710,
-  },
-  {
-    value: "Noordjurs",
-    nummer: 707,
-  },
+  // {
+  //   value: "Favrskov",
+  //   nummer: 710,
+  // },
+  // {
+  //   value: "Noordjurs",
+  //   nummer: 707,
+  //  },
   {
     value: "Odder",
     nummer: 727,
@@ -27,14 +27,14 @@ const kommuner = [
     value: "Skanderborg",
     nummer: 746,
   },
-  {
-    value: "Syddjurs",
-    nummer: 706,
-  },
-  {
-    value: "Randers",
-    nummer: 730,
-  },
+//   {
+//     value: "Syddjurs",
+//     nummer: 706,
+//   },
+//   {
+//     value: "Randers",
+//     nummer: 730,
+//   },
 ];
 
 export default function KommuneChooser() {
